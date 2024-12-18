@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) {
 
-        //inputNumbers();
-        //greatestAndLeastValues();
-        //numbersDivisionByThreeOrNein();
-        //numbersDivisionByFiveOrSeven();
-        //showNotTheSameNumbers();
-        //primeNumbers();
-        //sortedNumbersInAscendingAndDescendingOrder();
+//        inputNumbers();
+//        greatestAndLeastValues();
+//        numbersDivisionByThreeOrNein();
+//        numbersDivisionByFiveOrSeven();
+//        showNotTheSameNumbers();
+//        primeNumbers();
+//        sortedNumbersInAscendingAndDescendingOrder();
     }
 
     //Ввести с консоли n целых чисел. На консоль вывести:
@@ -117,6 +117,7 @@ public class Solution {
         } else {
             System.out.println(number + " is not a prime");
         }
+        scanner.close();
     }
     //Отсортированные числа в порядке возрастания и убывания.
     public static void sortedNumbersInAscendingAndDescendingOrder() {
