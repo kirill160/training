@@ -3,6 +3,7 @@ package basics.extendses.optionb.task1.bouquet;
 import basics.extendses.optionb.task1.abstractflower.Flower;
 import basics.extendses.optionb.task1.accessories.Accessory;
 import basics.extendses.optionb.task1.additionflower.Additionable;
+import org.w3c.dom.ls.LSOutput;
 
 
 import java.util.ArrayList;
@@ -55,6 +56,13 @@ public class Bouquet implements Additionable {
     public void setFresh(int days){
         for(Flower flower : flowers){
             flower.getTypeFlower().setDays(new Random().nextInt(days));
+        }
+    }
+    public void setHierarchy(Flower flower){
+        switch (flower.getTypeFlower()){
+            case ROSA -> System.out.println("Наивысшее растение");
+            case CHAMOMILE -> System.out.println("среднее растение");
+            case CORNFLOWER -> System.out.println("низшее");
         }
     }
 
