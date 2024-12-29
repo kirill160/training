@@ -1,7 +1,7 @@
-package basics.interfaces.optiona.task1.tutorial;
+package basics.impl.optiona.task1.tutorial;
 
-import basics.interfaces.optiona.task1.printingedition.PrintingEdition;
-import basics.interfaces.optiona.task1.printingedition.TypePublication;
+import basics.impl.optiona.task1.printingedition.PrintingEdition;
+import basics.impl.optiona.task1.printingedition.TypePublication;
 
 public class Tutorial extends PrintingEdition {
     public Tutorial(String name, int numberOfPages, TypePublication typePublication) {
@@ -32,8 +32,39 @@ public class Tutorial extends PrintingEdition {
     }
 
     @Override
-    public void issueAContract() {
-        System.out.println("договор " + this + " оформлен");
+    public TypePublication getTypePublication() {
+        return super.getTypePublication();
+    }
+
+    @Override
+    public void setTypePublication(TypePublication typePublication) {
+        super.setTypePublication(typePublication);
+    }
+
+    @Override
+    public void setIssueAContract(boolean issueAContract) {
+        super.setIssueAContract(issueAContract);
+    }
+
+    @Override
+    public boolean getIssueAContract() {
+        return super.getIssueAContract();
+    }
+
+    @Override
+    public void typeset(int size) {
+        System.out.println("издание " + this + " улучшено на размер " + size);
+    }
+
+    @Override
+    public boolean isIssueAContract() {
+        if(getIssueAContract()){
+            System.out.println("договор " + this + " оформлен");
+            return true;
+        }
+        System.out.println("договор " + this + " не оформлен");
+        return false;
+
     }
 
     @Override
@@ -44,11 +75,7 @@ public class Tutorial extends PrintingEdition {
     @Override
     public void edit() {
         System.out.println("издание " + this + " отредактировано");
-    }
 
-    @Override
-    public void typeset() {
-        System.out.println("издание " + this + " верстано");
     }
 
     @Override

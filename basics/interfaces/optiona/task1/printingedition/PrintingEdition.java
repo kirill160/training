@@ -1,19 +1,19 @@
-package basics.interfaces.optiona.task1.printingedition;
+package basics.impl.optiona.task1.printingedition;
 
-import basics.interfaces.optiona.task1.interfaces.Manageable;
+import basics.impl.optiona.task1.impl.Publication;
+import basics.impl.optiona.task1.impl.RegistrationActions;
 
-
-import java.util.Scanner;
-
-public abstract class PrintingEdition implements Manageable {
+public abstract class PrintingEdition implements Publication, RegistrationActions {
     protected String name;
     protected int numberOfPages;
     protected TypePublication typePublication;
+    protected boolean isIssueAContract;
 
     public PrintingEdition(String name, int numberOfPages, TypePublication typePublication) {
         this.name = name;
         this.numberOfPages = numberOfPages;
         this.typePublication = typePublication;
+
     }
 
     public PrintingEdition() {
@@ -44,32 +44,58 @@ public abstract class PrintingEdition implements Manageable {
         this.typePublication = typePublication;
     }
 
-    @Override
-    public abstract void issueAContract();
+
+
+    public void setIssueAContract(boolean issueAContract) {
+        isIssueAContract = issueAContract;
+    }
+
+    public boolean getIssueAContract(){
+        return isIssueAContract;
+    }
+
 
     @Override
-    public abstract void open();
+    public void cancelThePublication() {
+
+    }
 
     @Override
-    public abstract void edit();
+    public void payPublication() {
+
+    }
 
     @Override
-    public abstract void typeset();
+    public void resume() {
+
+    }
 
     @Override
-    public abstract void sendToPrint();
+    public void closePublication() {
+
+    }
 
     @Override
-    public abstract void cancelThePublication();
+    public abstract boolean isIssueAContract();
 
     @Override
-    public abstract void payPublication();
+    public void open() {
+
+    }
 
     @Override
-    public abstract void resume();
+    public void edit(){
+
+    }
 
     @Override
-    public abstract void closePublication();
+    public abstract void typeset(int size);
+
+
+    @Override
+    public void sendToPrint() {
+
+    }
 
     @Override
     public String toString() {

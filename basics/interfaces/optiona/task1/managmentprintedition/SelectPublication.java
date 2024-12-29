@@ -1,10 +1,10 @@
-package basics.interfaces.optiona.task1.managmentprintedition;
+package basics.impl.optiona.task1.managmentprintedition;
 
-import basics.interfaces.optiona.task1.book.Book;
-import basics.interfaces.optiona.task1.magazine.Magazine;
-import basics.interfaces.optiona.task1.printingedition.PrintingEdition;
-import basics.interfaces.optiona.task1.printingedition.TypePublication;
-import basics.interfaces.optiona.task1.tutorial.Tutorial;
+import basics.impl.optiona.task1.book.Book;
+import basics.impl.optiona.task1.magazine.Magazine;
+import basics.impl.optiona.task1.printingedition.PrintingEdition;
+import basics.impl.optiona.task1.printingedition.TypePublication;
+import basics.impl.optiona.task1.tutorial.Tutorial;
 
 import java.util.Scanner;
 
@@ -12,6 +12,7 @@ public class SelectPublication {
     private PrintingEdition printingEdition;
     private final Scanner scanner;
     private String answer;
+    private final int SIZE_LETTERS = 10;
 
     public SelectPublication(TypePublication typePublication) {
         this.printingEdition = selectTypePublication(typePublication);
@@ -30,13 +31,17 @@ public class SelectPublication {
 
     public void show() {
         selectIssueAContract();
-        selectPublication();
-        selectTypeset();
-        selectSendToPrint();
-        selectCancelOfPublication();
-        selectPayByPublication();
-        selectResumePublication();
-        selectClosePublication();
+        if (printingEdition.isIssueAContract()) {
+            selectPublication();
+            selectEditPublication();
+            selectTypeset();
+            selectSendToPrint();
+            selectCancelOfPublication();
+            selectPayByPublication();
+            selectResumePublication();
+            selectClosePublication();
+
+        }
 
 
 
@@ -48,10 +53,9 @@ public class SelectPublication {
 
         answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Да")) {
-            printingEdition.issueAContract();
+            printingEdition.setIssueAContract(true);
         } else {
-            scanner.close();
-            System.exit(0);
+            exit();
         }
     }
 
@@ -62,13 +66,21 @@ public class SelectPublication {
         answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Да")) {
             printingEdition.open();
+        } else {
+            exit();
         }
+
+    }
+
+    private void selectEditPublication(){
         System.out.println("Хотите редактировать издание?");
         System.out.println("введите да или нет");
 
         answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Да")) {
             printingEdition.edit();
+        }else {
+            exit();
         }
     }
 
@@ -78,7 +90,9 @@ public class SelectPublication {
 
         answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Да")) {
-            printingEdition.typeset();
+            printingEdition.typeset(SIZE_LETTERS);
+        }else {
+            exit();
         }
     }
 
@@ -99,6 +113,8 @@ public class SelectPublication {
         answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Да")) {
             printingEdition.cancelThePublication();
+        } else {
+            exit();
         }
     }
 
@@ -109,6 +125,8 @@ public class SelectPublication {
         answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Да")) {
             printingEdition.payPublication();
+        } else {
+            exit();
         }
     }
 
@@ -119,6 +137,8 @@ public class SelectPublication {
         answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Да")) {
             printingEdition.resume();
+        } else {
+            exit();
         }
     }
 
@@ -129,8 +149,13 @@ public class SelectPublication {
         answer = scanner.nextLine();
         if (answer.equalsIgnoreCase("Да")) {
             printingEdition.closePublication();
-            scanner.close();
+            exit();
         }
+
+    }
+    private void exit(){
+        scanner.close();
+        System.exit(0);
     }
 
 }
