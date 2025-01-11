@@ -293,10 +293,10 @@ public class Solution {
         }
 
         int[] digitsArray = new int[n];
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
+        for (int[] ints : array) {
+            for (int j = 0; j < ints.length; j++) {
                 if (j == k) {
-                    digitsArray[count++] = array[i][j];
+                    digitsArray[count++] = ints[j];
 
                 }
             }
