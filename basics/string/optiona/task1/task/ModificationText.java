@@ -68,7 +68,7 @@ public class ModificationText {
                 sb.append(list.get(i));
 
             }
-            sb.append("\n");
+
             char[] buffer = sb.toString().toCharArray();
 
             if (!list.isEmpty()) {
