@@ -29,37 +29,33 @@ public class ModificationText {
         List<String> result = new ArrayList<>();
         List<String> sentences = List.of(readTextInList().split("\\s+[\\t\\n\\x0B\\f\\r]"));
 
-        if (sentences != null) {
+        for (String sentence : sentences) {
 
-            for (String sentence : sentences) {
+            String[] words = sentence.split("\\s+");
 
-                String[] words = sentence.split("\\s+");
+            for (String word : words) {
 
-                for (String word : words) {
+                StringBuilder sb = new StringBuilder(word);
 
-                    StringBuilder sb = new StringBuilder(word);
+                if (word.length() > indexString && Character.isLetter(word.charAt(indexString))) {
 
-                    if (word.length() > indexString && Character.isLetter(word.charAt(indexString))) {
+                    sb.setCharAt(indexString, symbol);
+                    result.add(sb + " ");
 
-                        sb.setCharAt(indexString, symbol);
-                        result.add(sb + " ");
+                } else {
 
-                    } else {
-
-                        result.add(word + " ");
-                    }
-
+                    result.add(word + " ");
                 }
 
-                result.add("\n");
             }
-            writeText(result);
 
+            result.add("\n");
         }
+        writeText(result);
     }
 
 
-    private void writeText(@NotNull List<String> list) {
+        private void writeText(@NotNull List<String> list) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Kiril\\training\\basics\\string\\optiona\\task1\\result text.txt"))) {
 
             StringBuilder sb = new StringBuilder();
@@ -71,10 +67,8 @@ public class ModificationText {
 
             char[] buffer = sb.toString().toCharArray();
 
-            if (!list.isEmpty()) {
+            bw.write(buffer);
 
-                bw.write(buffer);
-            }
             bw.flush();
 
 
