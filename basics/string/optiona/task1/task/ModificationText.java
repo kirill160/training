@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ModificationText {
 
     private String readTextInList() {
@@ -27,7 +28,7 @@ public class ModificationText {
 
     public void changeLetter(int indexString, char symbol) {
         List<String> result = new ArrayList<>();
-        List<String> sentences = List.of(readTextInList().split("\\s+[\\t\\n\\x0B\\f\\r]"));
+        List<String> sentences = List.of(readTextInList().split("\\s+\\n"));
 
         for (String sentence : sentences) {
 
@@ -43,10 +44,8 @@ public class ModificationText {
                     result.add(sb + " ");
 
                 } else {
-
                     result.add(word + " ");
                 }
-
             }
 
             result.add("\n");
@@ -55,7 +54,7 @@ public class ModificationText {
     }
 
 
-        private void writeText(@NotNull List<String> list) {
+    private void writeText(@NotNull List<String> list) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\Kiril\\training\\basics\\string\\optiona\\task1\\result text.txt"))) {
 
             StringBuilder sb = new StringBuilder();
